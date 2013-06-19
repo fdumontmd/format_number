@@ -21,17 +21,17 @@ char* format_number(uint32_t n) {
     if (!n) {
 	return strdup(zero);
     } else {
-	char*p = &buf[12];
+	char*p = &buf[13];
 	int i = 1;
 	while (n) {
-	    *p-- = '0' + (n%10);
+	    *(--p) = '0' + (n%10);
 	    n /= 10;
 	    if (i % 3 == 0 && n) {
-		*p-- = ',';
+		*(--p) = ',';
 	    }
 	    ++i;
 	}
 
-	return strdup(p+1);
+	return strdup(p);
     }
 }
